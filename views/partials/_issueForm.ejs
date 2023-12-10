@@ -1,0 +1,69 @@
+<!-- Button trigger modal -->
+<button type="button" class=" btn btn-danger bg-gradient p-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Create Issue
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Create a Issue</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/project/<%= project._id %>" method="post" class="w-100" style="width: 18rem;">
+            <div class="mb-3">
+                <label for="title" class="form-label fw-bold">Title</label>
+                <input type="text" name="title" class="form-control" id="name" placeholder="Title" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label fw-bold">Description</label>
+                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Write something about the Issue" required></textarea>
+            </div>
+
+            <% if(project.labels.length > 0){%>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown button
+                    </button>
+                    <ul class="dropdown-menu">
+                        <%for(let label of project.labels){%>
+                            <li><a class="dropdown-item" href="#"><%= label %></a></li>
+                        <%}%>
+                    </ul>
+                  </div>
+            <%}%>
+
+            <div class="mb-3">
+                <label for="labels" class="form-label fw-bold">Add Labels</label>
+                <div>
+                    <input class="form-check-input" name= "labels" type="checkbox" value="Bug" id="bug">
+                    <label class="form-check-label" for="bug">
+                      Bug
+                    </label>
+
+                    <input class="form-check-input" name= "labels" type="checkbox" value="UI Improvement" id="ui-improvement">
+                    <label class="form-check-label" for="ui-improvement">
+                      UI Improvement
+                    </label>
+
+                    <input class="form-check-input" name= "labels" type="checkbox" value="Documentation" id="documentation">
+                    <label class="form-check-label" for="documentation">
+                      Documentation
+                    </label>
+                </div>
+            </div>    
+            <div class="mb-3">
+                <label for="author" class="form-label fw-bold">Author</label>
+                <input type="text" name="author" class="form-control" id="author" placeholder="Author" required>
+            </div>
+        
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-danger bg-gradient">Create Issue</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>

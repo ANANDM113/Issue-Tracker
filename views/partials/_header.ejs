@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-sm bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand ms-4" style="font-weight: bolder; color: darkorange;" href="/">Issue Tracker</a>
+        <%if(title === "Project"){%>
+            
+            <%- include('_issueForm'); %>
+        <%}else{%>
+            <%- include('_projectForm'); %>
+        <%}%>
+    </div>
+</nav>
+
+
+
